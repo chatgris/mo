@@ -13,11 +13,12 @@ Install it with rubygems:
 With bundler, add it to your `Gemfile`:
 
 ``` ruby
-gem "mo", "~>0.0.1"
+gem "mo", "~>0.0.2"
 ```
 
 Rake tasks :
 
+    rake mo:encoding                         # Add utf-8 encoding on files that don't have it
     rake mo:whitespace                       # Clean-up trailing whitespaces.
 
 
