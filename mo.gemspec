@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.authors      = ["chatgris"]
   s.email        = "jboyer@af83.com"
   s.homepage     = "https://github.com/chatgris/mo"
-  s.summary      = "[Mo helps you keep your rails project clean.]"
-  s.description  = "[Mo helps you keep your rails project clean.]"
+  s.summary      = "Mo helps you keep your rails project clean."
+  s.description  = "Mo helps you keep your rails project clean."
 
   s.files        = `git ls-files app lib`.split("\n")
   s.platform     = Gem::Platform::RUBY
