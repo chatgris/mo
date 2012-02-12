@@ -15,6 +15,17 @@ module Mo
           end
         end
 
+        desc "Convert ruby hashes to 1.9 style."
+        task :rocketless do
+          Dir['**/*.rb'].each do |file|
+            source = File.open(file).read
+            regexp = /(?<!return)(?<!:)(?<!\w)(\s+):(\w+)\s*=>/
+            next if source.scan(regexp).size.zero?
+            source.gsub!(regexp, '\1\2:')
+            open(file, 'w') { |b| b << source }
+          end
+        end
+
         # Courtesy of changa.
         desc "Add utf-8 encoding on files that don't have it"
         task :encoding do
