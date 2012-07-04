@@ -13,7 +13,14 @@ Install it with rubygems:
 With bundler, add it to your `Gemfile`:
 
 ``` ruby
-gem "mo", "~>0.0.3"
+gem "mo", "~>0.1.0"
+```
+
+Without rails, added those lines to `Rakefile` :
+
+``` ruby
+require 'mo'
+load 'mo/tasks.rake'
 ```
 
 Rake tasks :
