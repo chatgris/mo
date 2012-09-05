@@ -1,11 +1,13 @@
 PATH
   remote: .
   specs:
-    mo (0.0.3)
+    mo (0.1.0)
+      boson
 
 GEM
   remote: http://rubygems.org/
   specs:
+    boson (1.2.4)
 
 PLATFORMS
   ruby

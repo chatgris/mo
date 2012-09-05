@@ -11,8 +11,9 @@ Gem::Specification.new do |s|
   s.homepage     = "https://github.com/chatgris/mo"
   s.summary      = "Mo helps you keep your rails project clean."
   s.description  = "Mo helps you keep your rails project clean."
-
-  s.files        = `git ls-files app lib`.split("\n")
+  s.files        = `git ls-files bin lib`.split("\n")
   s.platform     = Gem::Platform::RUBY
   s.require_path = 'lib'
+  s.executables  = s.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
+  s.add_dependency "boson"
 end
