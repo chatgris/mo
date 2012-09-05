@@ -1,10 +1,8 @@
-MO
-==
+# MO
 
 Mo helps you keep your rails project clean.
 
-Installation
-------------
+## Installation
 
 Install it with rubygems:
 
@@ -16,21 +14,22 @@ With bundler, add it to your `Gemfile`:
 gem "mo", "~>0.1.0"
 ```
 
-Without rails, added those lines to `Rakefile` :
+## Usage
 
-``` ruby
-require 'mo'
-load 'mo/tasks.rake'
+```
+Usage: mo [OPTIONS] COMMAND [ARGS]
+
+Available commands:
+  eighty_column  Print files with more than 80 columns
+  encoding       Add utf-8 encoding on files that don't have it
+  help           Displays help for a command
+  rocketless     Convert ruby hashes to 1.9 style.
+  whitespace     Clean-up trailing whitespaces.
+
+Options:
+  -h, --help  Displays this help message
 ```
 
-Rake tasks :
-
-    rake mo:encoding                         # Add utf-8 encoding on files that don't have it
-    rake mo:rocketless                       # Convert ruby hashes to 1.9 style.
-    rake mo:whitespace                       # Clean-up trailing whitespaces.
-
-
-Copyright
----------
+## Copyright
 
 MIT. See LICENSE for further details.
