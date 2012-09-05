@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    mo (0.1.0)
+    mo (1.0.0)
       boson
 
 GEM
