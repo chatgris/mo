@@ -5,6 +5,8 @@ module Mo
   class Runner < Boson::Runner
     RUBY_FILES = %w[**/*.haml **/*.ru **/*.rake Gemfile **/*.rb]
     JS_FILES   = %w[**/*.js **/*.coffee]
+    DOC_FILES  = %w[**/*.md **/*.txt **/*.textile]
+    ALL_FILES  = RUBY_FILES + JS_FILES + DOC_FILES
 
     desc "Clean-up trailing whitespaces."
     def whitespace
@@ -16,6 +18,17 @@ module Mo
         if wsps
           system "sed -e 's/[ \t]*$//' -i #{file}"
           puts "  * #{file}"
+        end
+      end
+    end
+
+    desc "Print files with more than 80 columns"
+    def eighty_column
+      ALL_FILES.map { |glob| Dir[glob] }.flatten.each do |file|
+        output = `grep -n '.\\{80,\\}' #{file}`
+        unless output.empty?
+          puts file
+          puts output
         end
       end
     end
