@@ -3,7 +3,7 @@ require 'boson/runner'
 
 module Mo
   class Runner < Boson::Runner
-    RUBY_FILES = %w[**/*.haml **/*.ru **/*.rake Gemfile **/*.rb]
+    RUBY_FILES = %w[**/*.ru **/*.rake Gemfile **/*.rb]
     JS_FILES   = %w[**/*.js **/*.coffee]
     DOC_FILES  = %w[**/*.md **/*.txt **/*.textile]
     ALL_FILES  = RUBY_FILES + JS_FILES + DOC_FILES
