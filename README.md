@@ -11,7 +11,7 @@ Install it with rubygems:
 With bundler, add it to your `Gemfile`:
 
 ``` ruby
-gem "mo", "~>1.0.0"
+gem "mo", "~>1.0"
 ```
 
 ## Usage
