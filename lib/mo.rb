@@ -5,12 +5,13 @@ module Mo
   class Runner < Boson::Runner
     RUBY_FILES = %w[**/*.ru **/*.rake Gemfile **/*.rb]
     JS_FILES   = %w[**/*.js **/*.coffee]
+    TPL_FILES  = %w[**/*.haml **/*.erb **/*.slim **/*.jade]
     DOC_FILES  = %w[**/*.md **/*.txt **/*.textile]
-    ALL_FILES  = RUBY_FILES + JS_FILES + DOC_FILES
+    ALL_FILES  = RUBY_FILES + JS_FILES + DOC_FILES + TPL_FILES
 
     desc "Clean-up trailing whitespaces."
     def whitespace
-      (RUBY_FILES + JS_FILES).map { |glob| Dir[glob] }.flatten.each do |file|
+      (RUBY_FILES + JS_FILES + TPL_FILES).map { |glob| Dir[glob] }.flatten.each do |file|
         wsps = false
         File.open(file).each_line do |line|
           break if wsps = line.match(/( |\t)*$/).captures.compact.any?
