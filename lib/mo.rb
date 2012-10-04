@@ -9,6 +9,8 @@ module Mo
     DOC_FILES  = %w[**/*.md **/*.txt **/*.textile]
     ALL_FILES  = RUBY_FILES + JS_FILES + DOC_FILES + TPL_FILES
 
+    @@compiler_ruby = `which ruby`.strip
+
     desc "Clean-up trailing whitespaces."
     def whitespace
       (RUBY_FILES + JS_FILES + TPL_FILES).map { |glob| Dir[glob] }.flatten.each do |file|
@@ -53,6 +55,16 @@ module Mo
         if `head -n 1 #{file}|grep '# encoding'`.empty?
           system "sed -i -r '1 s/^(.*)$/# encoding: utf-8\\n\\1/g' #{file}"
           puts "  * #{file}"
+        end
+      end
+    end
+
+    desc "Check ruby syntax."
+    def check_syntax
+      RUBY_FILES.map { |glob| Dir[glob] }.flatten.each do |file|
+        if File.readable? file
+          puts "  * #{file}"
+          puts `#{@@compiler_ruby} -wc #{file}`.chomp
         end
       end
     end
