@@ -8,10 +8,10 @@ Gem::Specification.new do |s|
   s.version      = Mo::VERSION
   s.authors      = ["chatgris"]
   s.email        = "jboyer@af83.com"
-  s.homepage     = "https://github.com/chatgris/mo"
+  s.homepage     = "http://chatgris.github.com/mo/"
   s.summary      = "Mo helps you keep your rails project clean."
   s.description  = "Mo helps you keep your rails project clean."
-  s.files        = `git ls-files bin lib`.split("\n")
+  s.files        = `git ls-files bin lib LICENSE README.md`.split("\n")
   s.platform     = Gem::Platform::RUBY
   s.require_path = 'lib'
   s.executables  = s.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
