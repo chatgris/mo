@@ -4,6 +4,7 @@ require 'boson/runner'
 module Mo
   class Runner < Boson::Runner
     RUBY_FILES = %w[**/*.ru **/*.rake Gemfile **/*.rb]
+    SPEC_FILES = %w[spec/**/*.rb]
     JS_FILES   = %w[**/*.js **/*.coffee]
     TPL_FILES  = %w[**/*.haml **/*.erb **/*.slim **/*.jade]
     DOC_FILES  = %w[**/*.md **/*.txt **/*.textile]
@@ -67,6 +68,16 @@ module Mo
           puts `#{@@compiler_ruby} -wc #{file}`.chomp
         end
       end
+    end
+
+    desc "Check rspec's files name"
+    def check_rspec_files_name
+      ignores_dirs = %w[spec/factories spec/mocks spec/support spec/fabricators spec/fixtures spec/spec_helper.rb]
+      SPEC_FILES.map {|glob| Dir[glob]}.flatten.each {|file|
+        if !file.include?("_spec.rb") && !ignores_dirs.any? {|dir| file.include?(dir)}
+          puts " * #{file}"
+        end
+      }
     end
   end
 end
