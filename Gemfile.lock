@@ -8,9 +8,11 @@ GEM
   remote: http://rubygems.org/
   specs:
     boson (1.2.4)
+    minitest (2.6.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  minitest
   mo!
