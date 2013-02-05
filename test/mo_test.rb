@@ -1,6 +1,5 @@
 # encoding: UTF-8
-require 'mo'
-require 'minitest/autorun'
+require_relative 'test_helper'
 
 describe Mo::Runner do
   before do

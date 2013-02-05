@@ -16,5 +16,6 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.executables  = s.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   s.add_dependency 'boson'
+  s.add_development_dependency 'rake'
   s.add_development_dependency 'minitest'
 end

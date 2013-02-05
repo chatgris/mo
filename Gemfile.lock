@@ -9,6 +9,7 @@ GEM
   specs:
     boson (1.2.4)
     minitest (2.6.1)
+    rake (10.0.3)
 
 PLATFORMS
   ruby
@@ -16,3 +17,4 @@ PLATFORMS
 DEPENDENCIES
   minitest
   mo!
+  rake
