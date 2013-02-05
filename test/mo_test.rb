@@ -15,13 +15,18 @@ describe Mo::Runner do
 
   describe '#encoding' do
     it 'should call sed no encoding' do
-      @mock.expect(:system, nil, ["sed -i -r '1 s/^(.*)$/# encoding: utf-8\\n\\1/g' test/fixtures/encoding/ruby_without_encoding.rb"])
-      @runner.encoding(@mock)
-      @mock.verify
+      Dir.chdir 'test/fixtures/encoding/without_encoding' do
+        @mock.expect(:system, nil, ["sed -i -r '1 s/^(.*)$/# encoding: utf-8\\n\\1/g' ruby_without_encoding.rb"])
+        @runner.encoding(@mock)
+        @mock.verify
+      end
     end
 
     it 'should not call sed on emacs encoding' do
-      # TODO
+      Dir.chdir 'test/fixtures/encoding/with_encoding' do
+        @runner.encoding(@mock)
+        @mock.verify
+      end
     end
   end
 end
