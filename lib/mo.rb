@@ -49,10 +49,10 @@ module Mo
 
     # Courtesy of changa.
     desc "Add utf-8 encoding on files that don't have it"
-    def encoding
+    def encoding(listener = Kernel)
       RUBY_FILES.map { |glob| Dir[glob] }.flatten.each do |file|
-        if `head -n 1 #{file}|grep '# encoding'`.empty?
-          system "sed -i -r '1 s/^(.*)$/# encoding: utf-8\\n\\1/g' #{file}"
+        if `head -n 1 #{file} | grep '# encoding'`.empty?
+          listener.system "sed -i -r '1 s/^(.*)$/# encoding: utf-8\\n\\1/g' #{file}"
           puts "  * #{file}"
         end
       end
