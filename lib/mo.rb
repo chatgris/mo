@@ -71,11 +71,10 @@ module Mo
     desc "Check rspec's files name"
     def check_rspec_files_name
       ignores_dirs = %w[spec/factories spec/mocks spec/support spec/fabricators spec/fixtures spec/spec_helper.rb]
-      SPEC_FILES.map {|glob| Dir[glob]}.flatten.each {|file|
-        if !file.include?("_spec.rb") && !ignores_dirs.any? {|dir| file.include?(dir)}
-          puts " * #{file}"
-        end
-      }
+      SPEC_FILES.map {|glob| Dir[glob]}.flatten.each do |file|
+        next if file.match(/_spec.rb$/)
+        puts " * #{file}" unless ignores_dirs.any? {|dir| file.include?(dir) }
+      end
     end
 
     # Cross-platform way of finding an executable in the $PATH.
