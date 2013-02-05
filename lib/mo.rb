@@ -50,7 +50,7 @@ module Mo
     # Courtesy of changa.
     desc "Add utf-8 encoding on files that don't have it"
     def encoding(listener = Kernel)
-      RUBY_FILES.map { |glob| Dir[glob] }.flatten.each do |file|
+      Dir[*RUBY_FILES].each do |file|
         if `head -n 1 #{file} | grep -E '# encoding\|-\*- coding'`.empty?
           listener.system "sed -i -r '1 s/^(.*)$/# encoding: utf-8\\n\\1/g' #{file}"
           puts "  * #{file}"
@@ -60,7 +60,7 @@ module Mo
 
     desc "Check ruby syntax."
     def check_syntax
-      RUBY_FILES.map { |glob| Dir[glob] }.flatten.each do |file|
+      Dir[*RUBY_FILES].each do |file|
         if File.readable? file
           puts "  * #{file}"
           puts `#{which('ruby')} -wc #{file}`.chomp
@@ -69,11 +69,12 @@ module Mo
     end
 
     desc "Check rspec's files name"
-    def check_rspec_files_name
-      ignores_dirs = %w[spec/factories spec/mocks spec/support spec/fabricators spec/fixtures spec/spec_helper.rb]
-      SPEC_FILES.map {|glob| Dir[glob]}.flatten.each do |file|
+    def check_rspec_files_name(listener = Kernel)
+      ignores_dirs = %w[spec/factories spec/mocks spec/support spec/fabricators
+      spec/fixtures spec/spec_helper.rb]
+      Dir[*SPEC_FILES].each do |file|
         next if file.match(/_spec.rb$/)
-        puts " * #{file}" unless ignores_dirs.any? {|dir| file.include?(dir) }
+        listener.puts " * #{file}" unless ignores_dirs.any? {|dir| file.include?(dir) }
       end
     end
 

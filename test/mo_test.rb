@@ -29,4 +29,14 @@ describe Mo::Runner do
       end
     end
   end
+
+  describe '#check_rspec_files_name' do
+    it 'should print only file not naming correctly' do
+      Dir.chdir 'test/fixtures' do
+        @mock.expect(:puts, nil, [" * spec/chatgris.rb"]) # :p
+        @runner.check_rspec_files_name(@mock)
+        @mock.verify
+      end
+    end
+  end
 end
