@@ -12,6 +12,7 @@ module Mo
 
     desc "Clean-up trailing whitespaces."
     def whitespace
+      # XXX: Why not all files ?
       (RUBY_FILES + JS_FILES + TPL_FILES).map { |glob| Dir[glob] }.flatten.each do |file|
         wsps = false
         File.open(file).each_line do |line|
@@ -26,7 +27,7 @@ module Mo
 
     desc "Print files with more than 80 columns"
     def eighty_column
-      ALL_FILES.map { |glob| Dir[glob] }.flatten.each do |file|
+      Dir[*ALL_FILES].each do |file|
         output = `grep -n '.\\{80,\\}' #{file}`
         unless output.empty?
           puts file
@@ -37,7 +38,7 @@ module Mo
 
     desc "Convert ruby hashes to 1.9 style."
     def rocketless
-      RUBY_FILES.map { |glob| Dir[glob] }.flatten.each do |file|
+      Dir[*RUBY_FILES].each do |file|
         source = File.open(file).read
         regexp = /(?<!return)(?<!:)(?<!\w)(\s+):(\w+)\s*=>/
         next if source.scan(regexp).any?
