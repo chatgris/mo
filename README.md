@@ -1,6 +1,8 @@
 # MO
 
-Mo helps you keep your rails project clean.
+Mo helps you keep your project clean.
+
+[MO](http://disney.wikia.com/wiki/M-O) is for the little robot on WALL-E film.
 
 ## Installation
 
