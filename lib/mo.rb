@@ -12,8 +12,7 @@ module Mo
 
     desc "Clean-up trailing whitespaces."
     def whitespace
-      # XXX: Why not all files ?
-      (RUBY_FILES + JS_FILES + TPL_FILES).map { |glob| Dir[glob] }.flatten.each do |file|
+      Dir[*ALL_FILES].each do |file|
         wsps = false
         File.open(file).each_line do |line|
           break if wsps = line.match(/( |\t)*$/).captures.compact.any?
