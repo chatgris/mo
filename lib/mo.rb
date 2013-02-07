@@ -51,7 +51,7 @@ module Mo
     desc "Add utf-8 encoding on files that don't have it"
     def encoding(listener = Kernel)
       Dir[*RUBY_FILES].each do |file|
-        if `head -n 1 #{file} | grep -E '# encoding\|-\*- coding'`.empty?
+        if `head -n 2 #{file} | grep -E '# encoding\|-\*- coding'`.empty?
           listener.system "sed -i -r '1 s/^(.*)$/# encoding: utf-8\\n\\1/g' #{file}"
           puts "  * #{file}"
         end
