@@ -78,6 +78,8 @@ module Mo
       end
     end
 
+    private
+
     # Cross-platform way of finding an executable in the $PATH.
     # Taken from
     # http://stackoverflow.com/questions/2108727/which-in-ruby-checking-if-program-exists-in-path-from-ruby
