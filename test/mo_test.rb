@@ -39,4 +39,12 @@ describe Mo::Runner do
       end
     end
   end
+
+  describe 'whitespace' do
+    it 'should not raise with directory' do
+      Dir.chdir 'test/fixtures/whitespace' do
+        @runner.whitespace.must_equal nil
+      end
+    end
+  end
 end
