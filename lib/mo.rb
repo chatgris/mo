@@ -14,12 +14,15 @@ module Mo
     def whitespace
       Dir[*ALL_FILES].each do |file|
         wsps = false
-        File.open(file).each_line do |line|
-          break if wsps = line.match(/( |\t)*$/).captures.compact.any?
-        end
-        if wsps
-          system "sed -e 's/[ \t]*$//' -i #{file}"
-          puts "  * #{file}"
+        begin
+          File.open(file).each_line do |line|
+            break if wsps = line.match(/( |\t)*$/).captures.compact.any?
+          end
+          if wsps
+            system "sed -e 's/[ \t]*$//' -i #{file}"
+            puts "  * #{file}"
+          end
+        rescue Errno::EISDIR
         end
       end
     end
