@@ -43,7 +43,7 @@ describe Mo::Runner do
   describe 'whitespace' do
     it 'should not raise with directory' do
       Dir.chdir 'test/fixtures/whitespace' do
-        @runner.whitespace.must_equal nil
+        @runner.whitespace.must_equal ["typeahead.js"]
       end
     end
   end

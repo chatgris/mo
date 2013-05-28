@@ -13,6 +13,7 @@ module Mo
     desc "Clean-up trailing whitespaces."
     def whitespace
       Dir[*ALL_FILES].each do |file|
+        next if File.directory?(file)
         wsps = false
         File.open(file).each_line do |line|
           break if wsps = line.match(/( |\t)*$/).captures.compact.any?
