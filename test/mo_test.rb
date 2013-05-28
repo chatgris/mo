@@ -9,7 +9,7 @@ describe Mo::Runner do
 
   describe '#which' do
     it 'should find ruby' do
-      @runner.which('ruby').wont_be_nil
+      @runner.send(:which, 'ruby').wont_be_nil
     end
   end
 
