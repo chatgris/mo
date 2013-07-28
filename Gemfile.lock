@@ -5,7 +5,7 @@ PATH
       boson
 
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     boson (1.2.4)
     minitest (2.6.1)
