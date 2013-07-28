@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/chatgris/mo.png?branch=master)](https://travis-ci.org/chatgris/mo)
+
 # MO
 
 Mo helps you keep your project clean.
