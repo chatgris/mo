@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
   s.homepage     = "http://chatgris.github.com/mo/"
   s.summary      = "Mo helps you keep your rails project clean."
   s.description  = "Mo helps you keep your rails project clean."
+  s.license      = 'MIT'
   s.files        = `git ls-files bin lib LICENSE README.md`.split("\n")
   s.platform     = Gem::Platform::RUBY
   s.require_path = 'lib'
