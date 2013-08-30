@@ -69,6 +69,19 @@ module Mo
       end
     end
 
+    desc 'Check unbreakable space'
+    def check_unbreakable_space(listener = Kernel)
+      Dir[*RUBY_FILES].each do |file|
+        if File.readable? file
+          source = File.open(file).read
+          regexp = /\u00A0/
+          if source.scan(regexp).any?
+            listener.puts " * #{file}"
+          end
+        end
+      end
+    end
+
     desc "Check rspec's files name"
     def check_rspec_files_name(listener = Kernel)
       ignores_dirs = %w[spec/factories spec/mocks spec/support spec/fabricators

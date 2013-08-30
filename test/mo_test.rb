@@ -47,4 +47,14 @@ describe Mo::Runner do
       end
     end
   end
+
+  describe 'unbreakable' do
+    it 'should print error' do
+      Dir.chdir 'test/fixtures/unbreakable' do
+        @mock.expect(:puts, nil, [" * payment_backend.rb"])
+        @runner.check_unbreakable_space(@mock)
+        @mock.verify
+      end
+    end
+  end
 end

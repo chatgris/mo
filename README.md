@@ -31,6 +31,7 @@ Available commands:
   help                    Displays help for a command
   rocketless              Convert ruby hashes to 1.9 style.
   whitespace              Clean-up trailing whitespaces.
+  unbreakable             Print files with unbreakable space.
 
 Options:
   -h, --help  Displays this help message
